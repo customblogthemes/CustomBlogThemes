@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+    <head>
+        {MobileAppHeaders}
+        <meta charset="utf-8">
+        <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+        {block:Description}
+        <meta name="description" content="{MetaDescription}">
+        {/block:Description}
+        <link rel="shortcut icon" href="{Favicon}">
+        
+
+        {block:Hidden}
+            <!--IMAGES-->
+            <meta name="image:Background" content=""/>
+            
+            <!--COLORS-->
+            <meta name="color:Blog Title" content="#000"/>
+            <meta name="color:Header" content="#000"/>
+            <meta name="color:Header Background" content="#7FC7AF"/>
+            <meta name="color:Header Link" content="#FF3D7F"/>
+            <meta name="color:Header Link Hover" content="#FF3D7F"/>
+            <meta name="color:Blog Background" content="#ebede1"/>
+            <meta name="color:Posts Background" content="#FFF"/>
+            <meta name="color:Link" content="#FF3D7F"/>
+            <meta name="color:Link Hover" content="#FF9E9D"/>
+            <meta name="color:Footer Background" content="#eaeaea"/>
+            <meta name="color:Footer" content="#3e3e3e"/>
+            <meta name="color:Footer Link" content="#888888"/>
+            <meta name="color:Footer Link Hover" content="#3FB8AF"/>
+            
+            <!--FONTS-->
+            <meta name="text:Google Fonts" content="<link href=' ' rel='stylesheet'>"/>
+            <meta name="text:Title Fonts" content="'Cutive Mono'"/>
+            <meta name="text:Quote Fonts" content="'Shadows Into Light'"/>
+
+        {/block:Hidden}
+        
+        <link href="https://fonts.googleapis.com/css?family=Cinzel|Coming+Soon|Cutive+Mono|Fredoka+One|Give+You+Glory|Gloria+Hallelujah|Gochi+Hand|Indie+Flower|Pacifico|Quicksand|Reenie+Beanie|Shadows+Into+Light|Source+Sans+Pro|Unkempt" rel="stylesheet">
+        {text:Google Fonts}
+
+        
+
+        <style>
+            body{
+                background: {color:Blog Background};
+                background-image: url({image:Background});
+                background-repeat: no-repeat;
+                background-position: right top;
+                background-attachment: fixed;
+                background-size: cover;
+                margin: 0;
+                padding: 0;
+            }
+            
+            a, a:visited, a:hover, a:active{
+                text-decoration: none;
+            }
+        
+           #mainBody{
+                margin: 0 auto;
+                width: 50%;
+                max-width: 700px;
+           }
+           
+           menu{
+                background-color: {color:Header Background};
+                margin: 0;
+                padding: 20px 50px;
+           }
+           
+           menu h1{
+               font-family: {text:Title Fonts}, cursive;
+                margin: 0;
+           }
+           
+           menu h1, menu div{
+                width: 50%;
+                margin: 0 auto;
+           }
+           menu nav{
+               width: 50%;
+               margin: 16px auto 0;
+           }
+           menu nav ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+           }
+           
+           menu nav ul li{
+                display: inline-block;
+           }
+           
+           menu nav ul li a, nav ul li a:visited{
+                color: {color:Header Link};
+                margin: 0 16px;
+                text-decoration: none;
+           }
+           menu nav ul li a:first-child{
+               margin-left: 0;
+           }
+           menu nav ul li a:hover{
+                color: {color:Header Link Hover};
+           }
+           
+           .pagination{
+                border-radius: 5px;
+                box-shadow: 2px 2px 15px #cccccc;
+                padding: 15px 30px;
+                background-color: {color:Footer Background};
+                margin: 32px 0;
+                text-align: center;
+           }
+           
+           .pagination span{
+               display: inline-block;
+               width: 100%;
+           }
+           
+           
+           .pagination a, .pagination a:visited{
+               color: {color:Footer Link};
+               margin: 0 16px;
+           }
+           
+           .pagination a:hover{
+               color: {color:Footer Link Hover};
+           }
+           
+           .posts { 
+                background-color: {color:Posts Background};
+                border-radius: 5px;
+                box-shadow: 2px 2px 15px #cccccc;
+                margin: 32px 0;
+           }
+           
+           
+           .blogpost blockquote{
+                border-left: 1px solid #cecece;
+                padding-left: 15px;
+           }
+           
+           .blogpost figure iframe, .blogpost img{
+               width: 100%;
+           }
+           
+           .blogpost iframe{
+                margin: 0 auto;
+                display: block;
+           }
+           
+           .blogpost .tumblr_audio_player, .blogpost .spotify_audio_player {
+                width: 100%;
+            }
+            
+            .blogpost .audioPlays {
+                padding: 0 32px;
+                margin: 8px 0 0 0;
+                text-align: right;
+            }
+           
+           .blogpost h2 { 
+               margin: 0;
+               padding 0.83em 0;
+           }
+           
+           
+           .blogpost .blogpostBody{
+               padding: 32px;
+           }
+           
+           .blogpost .blogpostBody a, .blogpost .blogpostBody a:visited{
+               color: {color:Link};
+           }
+           
+           .blogpost .blogpostBody a:hover{
+               color: {color:Link Hover};
+           }
+           
+           .blogpost .blogpostBody label{
+                font-weight: bold;    
+           }
+           
+           .blogpost .blogpostBody .quote{
+               border: none;
+               font-family: {text:Quote Fonts}, cursive;
+               font-size: 2em;
+           }
+           
+           .posts .postFooter{
+               background-color: {color:Footer Background};
+               border-radius: 0 0 5px 5px;
+               color: {color:Footer};
+               padding: 16px;
+           }
+           
+           .posts .postFooter span{
+               display: inline-block;
+               padding: 2px 0;
+               width: 100%;
+           }
+           
+           .posts .postFooter .notes{
+               float: right;
+           }
+           
+           .posts .postFooter span a, .posts .postFooter span a:visited{
+               color: {color:Footer Link};
+           }
+           
+
+           .posts .postFooter span a:hover{
+               color: {color:Footer Link Hover};
+           }
+           
+           .posts .postFooter .tags a{ 
+               margin-right: 16px;
+           }
+           
+           
+           
+           #footer{
+                position: fixed;
+                bottom: 0;
+                text-align: right;
+                padding: 12px 15px;
+                display: inline-block;
+                right: 0;
+           }
+           #footer, #footer a{
+                color: #888888;
+           }
+           
+           #permalink{
+               padding: 16px 8px;
+           }
+            #permalink img{
+                margin: 0 5px;
+               width: 16px;
+           }
+           #permalink a, #permalink a:visited{
+               color: {color:Link};
+           }
+           
+           #permalink a:hover{
+               color: {color:Link Hover};
+           }
+
+            /* Custom CSS */
+            {CustomCSS}
+        </style>
+    </head>
+    
+    
+    
+    <body>
+        <!--Header / Navigation-->
+        <menu>
+            <h1>{Title}</h1>
+            {block:ShowDescription} <div> {Description} </div> {/block:ShowDescription}
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a> </li>
+                    {block:HasPages} 
+                        {block:Pages}<li><a href="{URL}">{Label}</a> </li>{/block:Pages}
+                    {/block:HasPages}
+                    {block:AskEnabled}
+                        <li><a href="/ask">{AskLabel}</a> </li>
+                    {/block:AskEnabled}
+                    {block:SubmissionsEnabled} 
+                        <li><a href="/submit"> {SubmitLabel}</a></li>
+                    {/block:SubmissionsEnabled}
+                        <li><a href="/archive">Archive</a> </li>
+                </ul>
+            </nav>
+        </menu>
+        
+        
+        
+        
+        
+        
+        
+        
+        <section id="mainBody">
+        
+            <!-- Next / Previous-->
+            {block:Pagination}
+                    <nav class="pagination">
+                        {block:PreviousPage}
+                            <a href="{PreviousPage}"> Previous</a>
+                        {/block:PreviousPage}
+                        {block:NextPage}
+                            <a href="{NextPage}"> Next</a>
+                        {/block:NextPage}
+                        <br>
+                        {block:SearchPage} <span>Search: {SearchQuery} ({SearchResultCount})</span> {/block:SearchPage}
+                        {block:TagPage} <span>Tag: {Tag}</span>{/block:TagPage}
+                        <span> {CurrentPage} / {TotalPages} </span>
+                    </nav>
+            {/block:Pagination}
+
+        
+        
+            <!---posts-->
+            {block:Posts} 
+                <section class="posts">
+                
+                    
+                    {block:Text}
+                    <!--Text Post----------------------------------------------------------------------->
+                        <div class="blogpost">
+                            <div class="blogpostBody">
+                                {block:Title}<h2>{Title}</h2> {/block:Title}
+                                <div>
+                                    {Body}
+                                </div>
+                            </div>
+                        </div>
+                    {/block:Text}
+                    
+                    
+                    
+                    {Block:Photo}
+                    <!--Photo Post----------------------------------------------------------------------->
+                    <div class="blogpost">
+                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+                        <div class="blogpostBody">{Caption}</div>
+                    </div>
+                    {/Block:Photo}
+                    
+                    
+                    
+                     {block:Photoset}
+                     <!--PSet Post----------------------------------------------------------------------->
+                        <figure class="blogpost">
+                            <figure>
+                                {Photoset}
+                            </figure>
+                            <figcaption class="blogpostBody">
+                                    {Caption}
+                            </figcaption>
+                        </figure>
+                    {/block:Photoset}
+                    
+                    
+                    
+                    {block:Quote}
+                    <!--Quote Post---------------------------------------------------------------------->
+                        <div class="blogpost">
+                            <div class="blogpostBody">
+                                <blockquote class="quote {Length}">
+                                    &#34; {Quote} &#34;
+                                </blockquote>
+                                {block:Source}
+                                    <div class="source">- {Source}</div>
+                                 {/block:Source}
+                             </div>
+                        </div>
+                    {/block:Quote}
+                    
+                    
+                    
+                    {block:Link}
+                    <!--Link Post----------------------------------------------------------------------->
+                        <div class="blogpost">
+                            <div class="blogpostBody">
+                                <a {Target} href="{URL}" class="link">
+                                    {block:Thumbnail} <img src="{Thumbnail-HighRes}"> {/block:Thumbnail}
+                                    <h2>{Name}</h2>
+                                    {block:Excerpt} <div>{Excerpt}</div> {/block:Excerpt}
+                                </a>
+                                {block:Description} 
+                                    <div>{Description}</div>
+                                {/block:Description}
+                            </div>
+                        </div>
+                    {/block:Link}
+                    
+                    
+                    
+                    {block:Chat}
+                    <!--Chat Post----------------------------------------------------------------------->
+                        <div class="blogpost">
+                            <div class="blogpostBody">
+                                {block:Title}<h2 class="title">{Title}</h2>{/block:Title}
+                                {block:Lines}
+                                        <p>{block:Label}<label>{Label}</label>{/block:Label} {Line}</p>
+                                {/block:Lines}
+                            </div>
+                        </div>
+                    {/block:Chat}
+                    
+                    
+                    
+                    
+                    {block:Audio}                                        
+                    <!--Audio Post---------------------------------------------------------------------->
+                        <div class="blogpost">
+                            {block:AudioEmbed}
+                            {AudioEmbed color="white"}
+                        {/block:AudioEmbed}
+                        
+                            <div class="blogpostBody">
+                                <p class="audioPlays"> {PlayCountWithLabel}</p>
+                                {block:Caption} 
+                                    {Caption}
+                                {/block:Caption}
+                            </div>
+                        </div>
+                    {/block:Audio}
+                    
+                    
+                    
+                    {block:Video}
+                    <!--Video Post---------------------------------------------------------------------->
+                        <div class="blogpost">
+                            <figure>{Video-700}</figure>
+                            <figcaption class="blogpostBody">
+                                {Caption}
+                            </figcaption>
+                        </div>
+                    {/block:Video}
+                    
+                    
+                    
+                    
+                    {block:Date} 
+                    <!--Post Footer--------------------------------------------------------------------->
+                        <footer class="postFooter">
+                            <span>
+                                <a href="{Permalink}">{DayOfWeek} {Month} {DayOfMonth}, {Year}</a>
+                                {block:NoteCount} 
+                                    <a href="{Permalink}" class="notes">{NoteCountWithLabel}</a> 
+                                {/block:NoteCount}
+                            </span>
+                            {block:HasTags}
+                                <span class="tags">
+                                    {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+                                </span>
+                            {/block:HasTags}
+                        </footer>
+                    {/block:Date}
+                </section>
+                
+                
+                {block:Pagination}
+                    {block:PermalinkPage}
+                    <!--Permalink Page----------------------------------------------------------------------->
+                    <div id="permalink" class="posts">
+                            {block:IfDisqusShortname}
+                            <div class="disqus">
+                                <div id="disqus_thread"></div>
+                                <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+                                <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+                            </div>
+                            {/block:IfDisqusShortname}
+                            {block:NoteCount} 
+                                <div class="notes">
+                                    {block:PostNotes} 
+                                    {PostNotes}
+                                    {/block:PostNotes}
+                                </div>
+                            {/block:NoteCount}
+                    </div>
+                    {/block:PermalinkPage}
+                {/block:Pagination}
+            {/block:Posts}
+            
+            
+            
+            <!--next / previous pages-->
+            {block:Pagination}
+                <nav class="pagination">
+                    {block:PreviousPage}
+                        <a href="{PreviousPage}"> Previous</a>
+                    {/block:PreviousPage}
+                    {block:NextPage}
+                        <a href="{NextPage}"> Next</a>
+                    {/block:NextPage}
+                </nav>
+            {/block:Pagination}
+        </section>
+        
+        
+        <footer id="footer">
+            <span><span>Theme:</span> <a href="https://simplysweettheme.tumblr.com/">Simply Sweet</a></span>
+        </footer>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
